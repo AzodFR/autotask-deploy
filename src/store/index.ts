@@ -89,6 +89,7 @@ export default new Vuex.Store({
         state.instance = axios.create({
           baseURL: url,
         });
+        state.instance.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
         state.instance.get(`/users/all`).then((result) => {   
           resolve(result)
         }).catch((err) => {
