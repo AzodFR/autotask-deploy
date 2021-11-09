@@ -21,7 +21,7 @@ import { stringify } from 'querystring';
     <div class="number-in" v-if="text != ''">{{ text }}</div>
     <div class="error-login" v-if="error">Identifiant introuvable</div>
     <div id="number-input">
-      <div class="code-left">
+    <div class="line-code">
         <el-button
           id="button-input"
           :disabled="loading"
@@ -30,8 +30,6 @@ import { stringify } from 'querystring';
           @click="clickButton('1')"
           >1</el-button
         >
-      </div>
-      <div class="code">
         <el-button
           id="button-input"
           :disabled="loading"
@@ -40,8 +38,6 @@ import { stringify } from 'querystring';
           @click="clickButton('2')"
           >2</el-button
         >
-      </div>
-      <div class="code-right">
         <el-button
           id="button-input"
           :disabled="loading"
@@ -50,8 +46,9 @@ import { stringify } from 'querystring';
           @click="clickButton('3')"
           >3</el-button
         >
-      </div>
-      <div class="code-left">
+        </div>
+      <div class="code-break"></div>
+      <div class="line-code">
         <el-button
           id="button-input"
           :disabled="loading"
@@ -60,8 +57,6 @@ import { stringify } from 'querystring';
           @click="clickButton('4')"
           >4</el-button
         >
-      </div>
-      <div class="code">
         <el-button
           id="button-input"
           :disabled="loading"
@@ -70,8 +65,6 @@ import { stringify } from 'querystring';
           @click="clickButton('5')"
           >5</el-button
         >
-      </div>
-      <div class="code-right">
         <el-button
           id="button-input"
           :disabled="loading"
@@ -80,8 +73,9 @@ import { stringify } from 'querystring';
           @click="clickButton('6')"
           >6</el-button
         >
-      </div>
-      <div class="code-left">
+        </div>
+      <div class="code-break"></div>
+      <div class="line-code">
         <el-button
           id="button-input"
           :disabled="loading"
@@ -90,8 +84,6 @@ import { stringify } from 'querystring';
           @click="clickButton('7')"
           >7</el-button
         >
-      </div>
-      <div class="code">
         <el-button
           id="button-input"
           :disabled="loading"
@@ -100,8 +92,6 @@ import { stringify } from 'querystring';
           @click="clickButton('8')"
           >8</el-button
         >
-      </div>
-      <div class="code-right">
         <el-button
           id="button-input"
           :disabled="loading"
@@ -110,8 +100,9 @@ import { stringify } from 'querystring';
           @click="clickButton('9')"
           >9</el-button
         >
-      </div>
-      <div class="code-left">
+        </div>
+      <div class="code-break"></div>
+      <div class="line-code">
         <el-button
           id="button-input"
           :disabled="loading || num.length == 0"
@@ -120,8 +111,6 @@ import { stringify } from 'querystring';
           @click="deleteOne()"
           icon="el-icon-arrow-left"
         ></el-button>
-      </div>
-      <div class="code">
         <el-button
           id="button-input"
           :disabled="loading"
@@ -130,8 +119,6 @@ import { stringify } from 'querystring';
           @click="clickButton('0')"
           >0</el-button
         >
-      </div>
-      <div class="code-right">
         <el-button
           id="button-input"
           type="success"
@@ -142,7 +129,7 @@ import { stringify } from 'querystring';
           icon="el-icon-check"
           @click="connect()"
         ></el-button>
-      </div>
+        </div>
     </div>
   </div>
 </template>
@@ -216,20 +203,16 @@ export default {
 
 <style>
 #number-input {
-  display: grid;
-  grid-gap: 1px;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 100px;
+  display: flex;
+  justify-content:center;
+  flex-wrap: wrap;
+  margin-top: 1%;
 }
 
 #button-input {
   height: 85px;
   width: 85px;
   font-size: 2rem;
-}
-.code {
-  padding-left: 38px;
-  padding-bottom: 5px;
 }
 
 #button-change {
@@ -245,13 +228,12 @@ export default {
   cursor: pointer;
 }
 
-.code-left {
-  padding-left: 75%;
-  padding-bottom: 5px;
+.code-break {
+  width: 100%
 }
-.code-right {
-  padding-right: 75%;
-  padding-bottom: 5px;
+.line-code {
+  flex: 0 32%;
+height: 100px;
 }
 .disabled-input {
   width: 50%;
@@ -264,8 +246,6 @@ export default {
 }
 
 .number-in {
-  /* border: solid 1px rgb(185, 185, 185); */
-  /* background-color: rgb(216, 216, 216); */
   text-align: center;
   font-size: 64px;
 }
