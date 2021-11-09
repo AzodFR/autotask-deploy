@@ -1,5 +1,5 @@
 <template>
-  <img alt="Vue logo" :src="bdd + '/logo?rnd=' + cacheKey" style="width: 250px; height: 250px" v-if="id == -1" >
+  <img alt="Vue logo" :src="bdd + '/logo?rnd=' + cacheKey" class="logo-login" v-if="id == -1" >
   
 
   <Login v-if="id == -1" />
@@ -157,6 +157,11 @@ footer
 
 .footer-text {
   margin-left: 10px;
+}
+
+.logo-login {
+  width: 250px;
+  height: 250px;
 }
 
 </style>

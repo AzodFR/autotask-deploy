@@ -1,4 +1,3 @@
-import { stringify } from 'querystring';
 <template>
   <div class="code-top">
     <el-popconfirm
