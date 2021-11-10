@@ -258,4 +258,8 @@ height: 100px;
 .login-inout {
   margin: 10px;
 }
+
+body {
+  padding-top: 0;
+}
 </style>
