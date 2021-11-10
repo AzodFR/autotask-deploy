@@ -209,8 +209,8 @@ export default {
 }
 
 #button-input {
-  height: 85px;
-  width: 85px;
+  /* height: 85px;
+   width: 85px;*/
   font-size: 2rem;
 }
 
