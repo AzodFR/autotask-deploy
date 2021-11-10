@@ -209,8 +209,8 @@ export default {
 }
 
 #button-input {
-  /* height: 85px;
-   width: 85px;*/
+  height: 85px;
+   width: 85px;
   font-size: 2rem;
 }
 
@@ -231,7 +231,6 @@ export default {
   width: 100%
 }
 .line-code {
-  flex: 0 32%;
 height: 100px;
 }
 .disabled-input {
