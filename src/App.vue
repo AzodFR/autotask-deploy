@@ -163,4 +163,7 @@ footer
   height: 250px;
 }
 
+body {
+  padding-top: 0;
+}
 </style>
