@@ -195,4 +195,16 @@ export default {
 .desc {
   font-style: oblique;
 }
+
+>>>.el-progress-bar__innerText {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    font-size: 12px;
+    margin: 0 5px;
+    right: 50%;
+    position: absolute;
+    top: 25%;
+}
+
 </style>
