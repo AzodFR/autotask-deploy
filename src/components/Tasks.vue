@@ -14,8 +14,9 @@
         />
       </el-form-item>
     </el-form>
-    <k-progress :percent="done * 100 / tasks.length" :color-flow="true" />
+    
     <div v-if="tasks.length > 0" style="height: 300px">
+    <el-progress :percentage="Math.round(done * 100 / tasks.length)" :text-inside='true' :status="done * 100 / tasks.length == 100 ? 'success' : ''" stroke-width="20"></el-progress>
       <el-breadcrumb style="margin-left: 2%" separator-class="el-icon-arrow-right">
         <el-breadcrumb-item v-for="task in tasks"
           ><label :class="task.class" @click="changeTask(task.pos)">{{
@@ -63,8 +64,12 @@
 </template>
 
 <script>
+import ProgressBar from 'vue-simple-progress'
 export default {
   name: "Tasks",
+  components: {
+    ProgressBar
+  },
   data() {
     return {
       group: "-1",
@@ -91,10 +96,12 @@ export default {
             self.tasks[i] = x[i];
             self.originals[i] = x[i];
             self.tasks[i].pos = i;
-            if (x[i].done) self.tasks[i].class = "done-task";
+            if (x[i].done) {
+              self.tasks[i].class = "done-task";
+              self.done++;
+            } 
             else if (!first) {
               self.tasks[i].class = "active-task";
-              self.done++;
               self.active = i;
               first = true;
             } else self.tasks[i].class = "inactive-task";
