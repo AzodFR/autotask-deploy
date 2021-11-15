@@ -14,6 +14,7 @@
         />
       </el-form-item>
     </el-form>
+    <k-progress :percent="done * 100 / tasks.length" :color-flow="true" />
     <div v-if="tasks.length > 0" style="height: 300px">
       <el-breadcrumb style="margin-left: 2%" separator-class="el-icon-arrow-right">
         <el-breadcrumb-item v-for="task in tasks"
@@ -72,6 +73,7 @@ export default {
       originals: [],
       loading: false,
       active: 0,
+      done: 0,
       done_by: ""
     };
   },
@@ -80,6 +82,7 @@ export default {
       this.loading = true;
       const self = this;
       this.tasks = [];
+      this.done = 0;
       await this.$store
         .dispatch("retrieveAllTasksByGroup", this.group[0])
         .then(async (x) => {
@@ -91,6 +94,7 @@ export default {
             if (x[i].done) self.tasks[i].class = "done-task";
             else if (!first) {
               self.tasks[i].class = "active-task";
+              self.done++;
               self.active = i;
               first = true;
             } else self.tasks[i].class = "inactive-task";
@@ -105,6 +109,7 @@ export default {
     onSubmit: async function() {
       this.tasks[this.active].class = "done-task";
       this.tasks[this.active].done = true;
+      this.done++;
       this.originals[this.active].done = true;
       this.originals[this.active].done_by = this.$store.state.user.login;
       this.originals[this.active].comments = this.comment;
@@ -118,6 +123,7 @@ export default {
     cancelTask: async function() {
        this.tasks[this.active].class = "active-task";
       this.tasks[this.active].done = false;
+      this.done--;
       this.originals[this.active].done = false;
       this.originals[this.active].done_by = "";
       this.originals[this.active].comments = "";
