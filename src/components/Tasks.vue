@@ -196,7 +196,7 @@ export default {
   font-style: oblique;
 }
 
->>>.el-progress-bar__innerText {
+.el-progress-bar__innerText {
     display: inline-block;
     vertical-align: middle;
     color: #fff;
