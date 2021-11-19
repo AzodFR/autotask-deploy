@@ -87,10 +87,10 @@ export default {
                 this.group_users[j++] = this.users[i]
 
       },
-      removeGroup: function (login) {
+      removeGroup: async function (login) {
         const self = this;
         this.loading = true;
-        this.$store.dispatch('removeUserGroup', {login: login, group: this.selected}).then(x => {
+       await this.$store.dispatch('removeUserGroup', {login: login, group: this.selected[0]}).then(x => {
             for (let  i = 0; i < self.group_users.length; i++) {
               if (self.group_users[i].login == login)
               {

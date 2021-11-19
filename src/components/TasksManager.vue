@@ -157,11 +157,13 @@ export default {
   position: absolute;
   left: 130%;
   cursor: pointer;
+  margin-top: -25%;
 }
 .arrow-down {
   position: absolute;
   right: 130%;
   cursor: pointer;
+  margin-top: -25%;
 }
 .trash-2 {
   color: red;
