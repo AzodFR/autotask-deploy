@@ -136,6 +136,9 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+body {
+  touch-action: pan-y;
+}
 .bg-img{
   width: 50px;
 height: 50px;
