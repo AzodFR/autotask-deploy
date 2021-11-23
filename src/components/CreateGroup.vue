@@ -1,9 +1,9 @@
 <template>
-<h1>Créer un nouveau groupe</h1>
+<h1>Créer un nouveau poste</h1>
 <hr>
 <div v-if="created ==''">
 <el-form :inline="true" ref="form" :model="form" label-width="120px">
-  <el-form-item label="Nom du groupe:" prop="group_name">
+  <el-form-item label="Nom du poste:" prop="group_name">
       <el-input v-model="form.group_name"></el-input>
     </el-form-item>
     <el-form-item>
@@ -12,9 +12,9 @@
  </el-form>
  </div>
  <div v-else>
-  Le groupe {{created}} à été créée avec succès !
+  Le poste {{created}} à été créée avec succès !
  <br>
- <el-button type="primary" :disabled="form.group_name==''" @click="reset()">Créer un nouveau groupe</el-button>
+ <el-button type="primary" :disabled="form.group_name==''" @click="reset()">Créer un nouveau poste</el-button>
  </div>
 </template>
 

@@ -11,8 +11,8 @@
                 <li class="navbar-item"><a href="#" class="nav-link" v-if="user.level[1]" @click="newTask()" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Créer une tâche</a></li>
                 <li class="navbar-item"><a href="#" class="nav-link" v-if="user.level[1]" @click="taskManager()" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Gérer les tâches</a></li>
                 <li class="divider"></li>
-                <li class="navbar-item"><a href="#" class="nav-link" v-if="user.level[2]" @click="newGroup()" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Créer un groupe</a></li>
-                <li class="navbar-item"><a href="#" class="nav-link" v-if="user.level[2]" @click="groupManager()" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Gérer les groupes</a></li>
+                <li class="navbar-item"><a href="#" class="nav-link" v-if="user.level[2]" @click="newGroup()" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Créer un poste</a></li>
+                <li class="navbar-item"><a href="#" class="nav-link" v-if="user.level[2]" @click="groupManager()" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Gérer les postes</a></li>
                 <li class="divider"></li>
                 <li class="navbar-item"><a href="#" class="nav-link" v-if="user.level[3]" @click="newUser()" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Créer un utilisateur</a></li>
                 <li class="navbar-item"><a href="#" class="nav-link" v-if="user.level[3]" @click="userManager()" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Gérer les utilisateurs</a></li>

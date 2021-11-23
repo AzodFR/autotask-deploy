@@ -41,7 +41,7 @@
       :inline="true"
       label-width="120px"
     >
-        <el-form-item label="Groupe(s):">
+        <el-form-item label="Poste(s):">
       <el-cascader
           v-model="group"
           :options="groups_list"
@@ -113,7 +113,7 @@ export default {
         },
         {
           value: 2,
-          label: "Créer/Gérer les groupes",
+          label: "Créer/Gérer les postes",
         },
         {
           value: 3,
@@ -210,8 +210,6 @@ export default {
  padding: 10%   
 }
 
->>>.el-input__inner {
-box-sizing: content-box;
-}
+
 
 </style>

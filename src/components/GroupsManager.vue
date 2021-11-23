@@ -1,9 +1,9 @@
 <template>
-<h1 v-loading.fullscreen.lock="loading">Gestion des groupes</h1>
+<h1 v-loading.fullscreen.lock="loading">Gestion des postes</h1>
   <hr />
   
   <el-cascader
-    placeholder="Chercher un groupe"
+    placeholder="Chercher un poste"
     :options="this.$store.state.groups"
     
     filterable
@@ -16,7 +16,7 @@
     cancel-button-text="Non"
     icon="el-icon-info"
     icon-color="red"
-    title="Êtes vous sûre de vouloir supprimer ce groupe?"
+    title="Êtes vous sûre de vouloir supprimer ce poste?"
     @confirm="deleteGroup()"
   >
     <template #reference>
@@ -39,7 +39,7 @@
     cancel-button-text="Non"
     icon="el-icon-info"
     icon-color="red"
-    title="Êtes vous sûre de vouloir retirer cette personne du groupe?"
+    title="Êtes vous sûre de vouloir retirer cette personne du poste?"
     @confirm="removeGroup(user.login)"
   >
     <template #reference>

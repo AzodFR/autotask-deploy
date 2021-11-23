@@ -15,6 +15,7 @@ function decode(crypted) {
 }
 
 function encode(tab) {
+  console.log(tab);
   let result = "";
   tab.forEach(function(x) {
     result += x + ":";
@@ -38,7 +39,7 @@ export default new Vuex.Store({
       l_name: "",
       groups: [],
       groups_id: [],
-      special_task: "",
+      special: [],
       email: "",
       notifications: [],
       level: [],
@@ -50,7 +51,7 @@ export default new Vuex.Store({
       l_name: "",
       groups: [],
       groups_id: [],
-      special_task: "",
+      special: [],
       email: "",
       notifications: [],
       level: [],
@@ -74,6 +75,9 @@ export default new Vuex.Store({
       state.tasks = tasks;
     },
     getGTasks: function(state, tasks) {
+      for (let i = 0; i < tasks.length; i++) {
+        tasks[i].days = decode(tasks[i].days);
+      }
       state.g_tasks = tasks;
     },
   },
@@ -116,6 +120,7 @@ export default new Vuex.Store({
                       }
                   }
                 })
+            user.data.special = decode(user.data.special);
             user.data.groups = decode(user.data.groups);
             user.data.notifications = decode(user.data.notifications);
             commit("logUser", user.data);
@@ -173,6 +178,22 @@ export default new Vuex.Store({
           resolve(x.data))
       })
     },
+    setNewSpecial: ({commit, state}, special) => {
+      const tab = encode([...special.tab])
+      if (!isNaN(special.tab[0]))
+      return new Promise((resolve, reject) => {
+        state.instance.post(`/users/set/special/${special.id}/${tab}`).then(x => {
+          resolve(x.data);
+        });
+      });
+      else
+      return new Promise((resolve, reject) => {
+        state.instance.post(`/users/set/special/${special.id}`).then(x => {
+          console.log(x.data)
+          resolve(x.data);
+        });
+      });
+    },
     removeUserGroup: ({commit, state}, list) => {
       return new Promise ((resolve, reject) => {
         state.instance.post(`/users/fire/${list.login}/${list.group}`).then(x => resolve(x.data))
@@ -186,6 +207,10 @@ export default new Vuex.Store({
     getAllUser: ({commit, state}, nothing) => {
       return new Promise((resolve, reject) => {
         state.instance.get(`/users/all`).then(x => {
+          for (let i = 0; i < x.data.length; i++) {
+            x.data[i].special = decode(x.data[i].special);
+          }
+          console.log(x.data)
           resolve(x.data)
         })
       })
@@ -195,6 +220,11 @@ export default new Vuex.Store({
         state.instance.get(`/users/count`).then(x => {
           resolve(x.data)
         })
+      })
+    },
+    addSpecial: ({commit, state}, list) => {
+      return new Promise((resolve, reject) => {
+        state.instance.post(`/users/special/${list.user}/${list.task}`).then(x => resolve(x.data))
       })
     },
     getUser: ({commit, state}, login) => {
@@ -248,7 +278,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         state.instance.get(`/tasks/group/${id}`).then(function(tasks) {
           commit("getGTasks", tasks.data);
-          resolve(tasks.data);
+          resolve(state.g_tasks);
         })
       })
     },
@@ -263,6 +293,7 @@ export default new Vuex.Store({
       })
     },
     updateTask: ({commit, state}, task) => {
+      task.days = encode(task.days)
       return new Promise((resolve, reject) => {
         state.instance.post(`/tasks/update`, task).then(function(res) {
           resolve(res);
@@ -270,6 +301,7 @@ export default new Vuex.Store({
       })
     },
     updateTaskDone: ({commit, state}, task) => {
+      task.days = encode(task.days)
       return new Promise((resolve, reject) => {
         state.instance.post(`/tasks/update/done`, task).then(function(res) {
           resolve(res);

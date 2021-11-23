@@ -82,6 +82,7 @@ export default {
     console.log("%c You have nothing to do here close this", 'background:#fff; color:#ffff; font-size: 920px;')
     console.log("%c What are you doing step bro ?", 'background:#222; color:#bada55; font-size: 92px;')
     console.log("%c ⛔️ Get back to work ! ⛔️", 'background: #222; color:red; font-size: 48px;')
+    console.log(new Date(Date.now() + (3600 * 24 * 1000 * 6)).getDay())
     if (this.$store.state.instance.defaults.baseURL == "")
     {
       this.$store.state.user.id = -2;

@@ -36,7 +36,7 @@
           v-if="this.$store.state.user.level[1]"
         ></el-checkbox>
         <el-checkbox
-          label="Résumé journalier groupe"
+          label="Résumé journalier poste"
           name="type"
           v-if="this.$store.state.user.level[2]"
         ></el-checkbox>
@@ -73,7 +73,7 @@ export default {
       notifications: [],
       ref: {
         "Chaque tâche": 0,
-        "Résumé journalier groupe": 1,
+        "Résumé journalier poste": 1,
         "Résumé journalier global": 2,
       },
       rules: {
@@ -125,7 +125,7 @@ export default {
     if (this.$store.state.user.notifications[0])
       this.notifications.push("Chaque tâche");
     if (this.$store.state.user.notifications[1])
-      this.notifications.push("Résumé journalier groupe");
+      this.notifications.push("Résumé journalier poste");
     if (this.$store.state.user.notifications[1])
       this.notifications.push("Résumé journalier global");
 

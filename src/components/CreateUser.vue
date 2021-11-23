@@ -19,7 +19,7 @@ import { ElMessage } from 'element-plus';
       <el-form-item label="Email:" prop="email">
         <el-input v-model="form.email"></el-input>
       </el-form-item>
-      <el-form-item v-if="!this.$store.state.first" label="Groupes:">
+      <el-form-item v-if="!this.$store.state.first" label="Postes:">
         <el-cascader
           v-model="group"
           :options="options_group"
@@ -82,7 +82,7 @@ export default {
         },
         {
           value: 2,
-          label: "Créer/Gérer les groupes",
+          label: "Créer/Gérer les postes",
         },
         {
           value: 3,
@@ -186,7 +186,7 @@ export default {
         {
           value: 2,
           disabled: true,
-          label: "Créer/Gérer les groupes",
+          label: "Créer/Gérer les postes",
         },
         {
           value: 3,
