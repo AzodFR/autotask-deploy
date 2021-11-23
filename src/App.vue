@@ -136,8 +136,8 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-body {
-  touch-action: pan-y;
+* {
+  touch-action: manipulation;
 }
 .bg-img{
   width: 50px;
