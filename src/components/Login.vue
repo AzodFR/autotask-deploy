@@ -175,7 +175,7 @@ export default {
           if (response.id != -1) {
             self.loading = false;
             localStorage.setItem("auto_task-login", response.login);
-          } else localStorage.setItem("auto_task-login", null);
+          } else localStorage.removeItem("auto_task-login");
 
           self.error = true;
           self.loading = false;
