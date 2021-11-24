@@ -185,6 +185,8 @@ export default {
   async mounted() {
     if (localStorage.getItem("auto_task-login")) {
       this.num = localStorage.getItem("auto_task-login");
+      for (let i = 0; i < 4; i++)
+        this.text = this.num[i] + i != 3 ? " " : "";
       this.connect();
     }
     const self = this;
